@@ -9,7 +9,7 @@ const defaultData = {
   location: "",
   description: "",
 };
-const JobForm = () => {
+const JobForm = ({setShowForm}) => {
   const [formData, setFormData] = useState(defaultData);
 
   const handleChange = (e) => {
@@ -19,6 +19,8 @@ const JobForm = () => {
   const handleSubmit = async(e) => {
     e.preventDefault();
     await saveData(formData);
+    setShowForm(false);
+    setFormData(defaultData);
   };
   return (
     <div>
